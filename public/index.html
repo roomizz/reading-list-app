@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading List - ระบบจัดการรายการหนังสือ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📚 Reading List App</h1>
+      <p>ระบบบันทึกและจัดการรายการหนังสือที่อยากอ่าน</p>
+    </header>
+
+    <!-- ส่วนฟอร์มเพิ่ม/แก้ไขหนังสือ -->
+    <section class="card form-section">
+      <h2 id="form-title">➕ เพิ่มหนังสือใหม่</h2>
+      <form id="book-form">
+        <input type="hidden" id="book-id">
+        
+        <div class="form-group">
+          <label for="title">ชื่อหนังสือ *</label>
+          <input type="text" id="title" placeholder="เช่น Clean Code" required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">ผู้แต่ง *</label>
+          <input type="text" id="author" placeholder="เช่น Robert C. Martin" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">หมวดหมู่ *</label>
+            <select id="category" required>
+              <option value="">-- เลือกหมวดหมู่ --</option>
+              <option value="Technology">Technology</option>
+              <option value="Self-Help">Self-Help</option>
+              <option value="Finance">Finance</option>
+              <option value="Fiction">Fiction</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="status">สถานะการอ่าน *</label>
+            <select id="status" required>
+              <option value="unread">ยังไม่ได้อ่าน (Unread)</option>
+              <option value="reading">กำลังอ่าน (Reading)</option>
+              <option value="read">อ่านจบแล้ว (Read)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-save" class="btn btn-primary">บันทึกหนังสือ</button>
+          <button type="button" id="btn-cancel" class="btn btn-secondary hidden">ยกเลิกแก้ไข</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ส่วน Filter & กรองข้อมูล -->
+    <section class="filter-section">
+      <div class="filter-group">
+        <label for="filter-category">🔍 กรองตามหมวดหมู่:</label>
+        <select id="filter-category">
+          <option value="">ทั้งหมด (All Categories)</option>
+          <option value="Technology">Technology</option>
+          <option value="Self-Help">Self-Help</option>
+          <option value="Finance">Finance</option>
+          <option value="Fiction">Fiction</option>
+          <option value="General">General</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-status">📌 กรองตามสถานะ:</label>
+        <select id="filter-status">
+          <option value="">ทั้งหมด (All Statuses)</option>
+          <option value="unread">ยังไม่ได้อ่าน</option>
+          <option value="reading">กำลังอ่าน</option>
+          <option value="read">อ่านจบแล้ว</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- รายการหนังสือ -->
+    <main>
+      <h2>รายการหนังสือในระบบ (<span id="book-count">0</span>)</h2>
+      <div id="book-grid" class="book-grid">
+        <!-- จะถูกสร้างผ่าน JavaScript fetch() -->
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
